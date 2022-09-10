@@ -6,12 +6,17 @@ import { ErrorModal } from '../UI/ErrorModal';
 import classes from './AddUsers.module.css';
 
 const AddUsers = (props) => {
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+
   const [enteredUserName, setEnteredUserName] = useState('');
   const [enteredAge, setEnteredAge] = useState('');
   const [error, setError] = useState();
 
   const addUserhandler = (e) => {
     e.preventDefault();
+    console.log(nameInputRef.current.value);
+    console.log(ageInputRef.current.value);
     if (enteredUserName.trim().length === 0 || enteredAge.trim().length === 0) {
       setError({
         title: 'Invalid Input',
@@ -61,6 +66,7 @@ const AddUsers = (props) => {
             id="username"
             onChange={userNameChangeHandler}
             value={enteredUserName}
+            ref={nameInputRef}
           />
           <label htmlFor="age">Age (Years)</label>
           <input
@@ -68,6 +74,7 @@ const AddUsers = (props) => {
             id="age"
             onChange={ageChangeHandler}
             value={enteredAge}
+            ref={ageInputRef}
           />
           <Button type="submit">Add User</Button>
         </form>
