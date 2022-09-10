@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Wrapper from '../Helper/Wrapper';
 import { Button } from '../UI/Button';
 import { Card } from '../UI/Card';
@@ -8,8 +8,8 @@ import classes from './AddUsers.module.css';
 const AddUsers = (props) => {
   const [enteredUserName, setEnteredUserName] = useState('');
   const [enteredAge, setEnteredAge] = useState('');
-
   const [error, setError] = useState();
+
   const addUserhandler = (e) => {
     e.preventDefault();
     if (enteredUserName.trim().length === 0 || enteredAge.trim().length === 0) {
